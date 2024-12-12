@@ -7,22 +7,38 @@
 
 import SwiftUI
 
+struct User: Identifiable {
+    var id = "Peter Parker"
+}
+
 struct ContentView: View {
+    
+    // setting a user with default value of nil
+    @State private var selectedUser: User? = nil
+    @State private var isShowingUser = false
+    
     var body: some View {
-        VStack {
-            // SwiftUI will differ automatically show different views on different devices
-            NavigationSplitView(preferredCompactColumn: .constant(.detail)){
-                // tapping on the link will display over the secondary/detail view
-                NavigationLink("Primary"){
-                    Text("New View")
-                }
-            } detail: {
-                Text("Content")
-            }
-            // show our views within the split view as equal portions of each other, if the view is permissible
-            .navigationSplitViewStyle(.balanced)
+        Button("Tap Me") {
+            // sets our user to a User object
+            selectedUser = User()
+            isShowingUser = true
         }
-        .padding()
+        
+        // showing alert while unwrapping the optional
+//        .alert("Welcome", isPresented: $isShowingUser, presenting: selectedUser) { user in
+//            Button(user.id) {}
+//        }
+        
+        // binds selected user and opens a sheet when it is assigned
+        .sheet(item: $selectedUser) { user in
+            
+            // our sheet closure can let us use the binded result after its been assigned
+            Text(user.id)
+            
+            // presentation detents allows to support the sizing of our sheet
+            // medium is set as the default size, which shows the sheet only taking half of the screen
+                .presentationDetents([.medium, .large])
+        }
     }
 }
 
