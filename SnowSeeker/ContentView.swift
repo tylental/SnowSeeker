@@ -7,35 +7,36 @@
 
 import SwiftUI
 
+@Observable
+class Player {
+    var name = "Anonymous"
+    var highScore = 0
+}
 
-struct ContentView: View {
-    @State private var searchText = ""
-    
-    let allNames = ["Tyler", "Peter", "Iron Man", "Joey"]
-    var filteredNames: [String] {
-        if searchText.isEmpty {
-            allNames
-        }
-        else {
-            allNames.filter { name in
-                
-                // best way to find a substring of another string and ignores case by default
-                name.localizedStandardContains(searchText)
-            }
-        }
-    }
-    
+struct HighScoreView: View {
+    // this reads the object out from the environment
+    @Environment(Player.self) var player
     
     var body: some View {
-        NavigationStack {
-            List(filteredNames, id: \.self) { name in
-                Text(name)
-            }
-            .searchable(text: $searchText, prompt: "Look for something")
-            .navigationTitle("Searching")
+        // make a local copy of the player object to be usable
+        
+    
+        @Bindable var player = player
+        Stepper("High score: \(player.highScore)", value: $player.highScore)
+    }
+}
 
+struct ContentView: View {
+    @State private var player = Player()
+    
+    var body: some View {
+        VStack  {
+            Text("Welcome!")
+            HighScoreView()
         }
         
+        // designed for Observable objects and any subview can use this player object
+        .environment(player)
     }
 }
 
