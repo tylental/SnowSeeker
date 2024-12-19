@@ -7,38 +7,41 @@
 
 import SwiftUI
 
-struct User: Identifiable {
-    var id = "Peter Parker"
+struct UserView: View {
+    var body: some View {
+        // using Group allows our parent view to dictate how views will be laid out for views within the Group
+        Group {
+            Text("Name: Paul")
+            Text("Country: England")
+            Text("Pets: Donald and Trump")
+        }
+        .font(.title)
+    }
 }
 
 struct ContentView: View {
+    // watches how our view should be handled depending on the orientation boundaries of our device
     
-    // setting a user with default value of nil
-    @State private var selectedUser: User? = nil
-    @State private var isShowingUser = false
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     var body: some View {
-        Button("Tap Me") {
-            // sets our user to a User object
-            selectedUser = User()
-            isShowingUser = true
+//        if horizontalSizeClass == .compact {
+//            // syntactically different way to call our view
+//                VStack(content: UserView.init)
+//            } else {
+//                HStack(content: UserView.init)
+//            }
+        
+        // showing the best view that is suitable and fits the requirements of our device
+        
+        ViewThatFits {
+            Rectangle()
+                .frame(width: 500, height: 200)
+            
+            Circle()
+                .frame(width: 200, height: 200)
         }
         
-        // showing alert while unwrapping the optional
-//        .alert("Welcome", isPresented: $isShowingUser, presenting: selectedUser) { user in
-//            Button(user.id) {}
-//        }
-        
-        // binds selected user and opens a sheet when it is assigned
-        .sheet(item: $selectedUser) { user in
-            
-            // our sheet closure can let us use the binded result after its been assigned
-            Text(user.id)
-            
-            // presentation detents allows to support the sizing of our sheet
-            // medium is set as the default size, which shows the sheet only taking half of the screen
-                .presentationDetents([.medium, .large])
-        }
     }
 }
 
