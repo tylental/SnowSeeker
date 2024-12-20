@@ -37,6 +37,10 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Resorts")
+            // linking where our resort should go to
+            .navigationDestination(for: Resort.self) { resort in
+                    ResortView(resort: resort)
+            }
         } detail: {
             Welcome()
         }

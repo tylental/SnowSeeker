@@ -14,6 +14,7 @@ struct Resort: Codable, Hashable, Identifiable {
     var description: String
     var imageCredit: String
     var price: Int
+    var size: Int
     var snowDepth: Int
     var elevation: Int
     var runs: Int
