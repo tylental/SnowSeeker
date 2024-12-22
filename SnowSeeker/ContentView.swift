@@ -11,6 +11,8 @@ import SwiftUI
 struct ContentView: View {
     let resorts: [Resort] = Bundle.main.decode("resorts.json")
     
+    // initializing our favorites object and then making it viewable in all views
+    @State private var favorites = Favorites()
     @State private var searchText = ""
     
     var filteredResorts: [Resort] {
@@ -43,6 +45,14 @@ struct ContentView: View {
                             Text("\(resort.runs) runs")
                                 .foregroundStyle(.secondary)
                         }
+                        
+                        if favorites.contains(resort) {
+                            Spacer()
+                            
+                            Image(systemName: "heart.fill")
+                                .accessibilityLabel("This is a favorite resort")
+                                .foregroundStyle(.red)
+                        }
                     }
                 }
             }
@@ -55,6 +65,8 @@ struct ContentView: View {
         } detail: {
             Welcome()
         }
+        // make favorites usable with pointing to the same data in all views
+        .environment(favorites)
     }
 }
 
