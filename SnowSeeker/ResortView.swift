@@ -13,6 +13,9 @@ struct ResortView: View {
     @Environment(\.dynamicTypeSize) var dynamicTypeSize
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
+    @State private var selectedFacility: Facility?
+    @State private var showingFacility = false
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
@@ -49,7 +52,19 @@ struct ResortView: View {
                         .font(.headline)
                     
                     // formatting our text through array to automatically add an "and" before last element
-                    Text(resort.facilities, format: .list(type: .and))
+                    HStack {
+                        ForEach(resort.facilityTypes) { facility in
+                            
+                            // sets the optional value into an actual Facility value
+                            Button {
+                                selectedFacility = facility
+                                showingFacility = true
+                            } label: {
+                                facility.icon
+                                    .font(.title)
+                            }
+                        }
+                    }
                         .padding(.vertical)
                 }
                 .padding(.horizontal)
@@ -57,6 +72,16 @@ struct ResortView: View {
         }
         .navigationTitle("\(resort.name), \(resort.country)")
         .navigationBarTitleDisplayMode(.inline)
+        // presenting the alert only through a set value for selected Facility
+        
+        // optional value needs nil coalescing operator for all cases
+        
+        // presenting lets us use the selectedFacility value
+        .alert(selectedFacility?.name ?? "More information", isPresented: $showingFacility, presenting: selectedFacility) { _ in
+            
+        } message: { facility in
+            Text(facility.description)
+        }
     }
 }
 

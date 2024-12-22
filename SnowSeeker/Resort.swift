@@ -20,6 +20,11 @@ struct Resort: Codable, Hashable, Identifiable {
     var runs: Int
     var facilities: [String]
     
+    // mapping each string and letting this be initialized using the same string into a Facility array
+    var facilityTypes: [Facility] {
+        facilities.map(Facility.init)
+    }
+    
     // static variables are lazy loaded, forcing SwiftUI to load them only when they are called
     // this makes sure that allResorts will always be called before example
     static let allResorts: [Resort] = Bundle.main.decode("resorts.json")
