@@ -20,6 +20,7 @@
 		46A0DEDE2D0A881D00DA1F10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0DEDD2D0A881D00DA1F10 /* ContentView.swift */; };
 		46A0DEE02D0A881F00DA1F10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46A0DEDF2D0A881F00DA1F10 /* Assets.xcassets */; };
 		46A0DEE32D0A881F00DA1F10 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46A0DEE22D0A881F00DA1F10 /* Preview Assets.xcassets */; };
+		46E2880A2D1C8C5F00900FC0 /* SortOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E288092D1C8C5F00900FC0 /* SortOrder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		46A0DEDD2D0A881D00DA1F10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		46A0DEDF2D0A881F00DA1F10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		46A0DEE22D0A881F00DA1F10 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		46E288092D1C8C5F00900FC0 /* SortOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOrder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				46373E9E2D17BD9100B0744D /* Facility.swift */,
 				460F6FAC2D1517CA005CEEFC /* ResortDetailsView.swift */,
 				46373EA02D17C19300B0744D /* Favorites.swift */,
+				46E288092D1C8C5F00900FC0 /* SortOrder.swift */,
 				460F6FAA2D151723005CEEFC /* SkiDetailsView.swift */,
 				460F6FA42D150EA1005CEEFC /* Bundle-Decodable.swift */,
 				460F6FA62D151470005CEEFC /* Welcome.swift */,
@@ -171,6 +174,7 @@
 				46373EA12D17C19300B0744D /* Favorites.swift in Sources */,
 				46373E9F2D17BD9100B0744D /* Facility.swift in Sources */,
 				460F6FA72D151470005CEEFC /* Welcome.swift in Sources */,
+				46E2880A2D1C8C5F00900FC0 /* SortOrder.swift in Sources */,
 				460F6FA12D150DFA005CEEFC /* Resort.swift in Sources */,
 				460F6FA92D1515F9005CEEFC /* ResortView.swift in Sources */,
 				46A0DEDC2D0A881D00DA1F10 /* SnowSeekerApp.swift in Sources */,
