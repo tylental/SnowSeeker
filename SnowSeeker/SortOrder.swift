@@ -8,7 +8,7 @@
 import Foundation
 
 enum SortOrder: String, CaseIterable {
+    case none = "Default"
     case alphabetical = "Alphabetical"
     case country = "Country"
-    case none = "None"
 }
